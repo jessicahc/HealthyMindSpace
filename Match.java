@@ -6,20 +6,43 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class Match {
+public class Match{
+    private static class MatchedProfile {
+        private User user;
+        private int matches;
 
-    public static List<User> findMatches(User givenProfile, String dataFilePath) {
-        List<User> profiles = readProfiles(dataFilePath);
-
-        for (User profile : profiles) {
-            int matches = calculateMatches(givenProfile, profile);
-            profile.setMatches(matches);
+        public MatchedProfile(User user, int matches) {
+            this.user = user;
+            this.matches = matches;
         }
 
-        Collections.sort(profiles, Comparator.comparingInt(User::getMatches).reversed());
+        public User getUser() {
+            return user;
+        }
 
-        return profiles;
+        public int getMatches() {
+            return matches;
+        }
     }
+
+    
+    public static List<User> findMatches(User givenProfile, String dataFilePath) {
+        List<User> profiles = readProfiles(dataFilePath);
+        List<User> sortedProfiles = new ArrayList<User>();
+       
+        List<MatchedProfile> matchedProfiles = new ArrayList<>();
+        for (User profile: profiles){
+            int matches = calculateMatches(givenProfile, profile);
+            MatchedProfile matchedProfile =  new MatchedProfile(profile, matches);
+            matchedProfiles.add(matchedProfile);
+        }
+        Collections.sort(matchedProfiles, Comparator.comparingInt(MatchedProfile::getMatches));
+        for (MatchedProfile matchedProfile : matchedProfiles) {
+            sortedProfiles.add(matchedProfile.getUser());
+        }
+        return sortedProfiles;
+    }
+    
 
     private static List<User> readProfiles(String dataFilePath) {
         List<User> profiles = new ArrayList<>();
@@ -28,8 +51,8 @@ public class Match {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] profileData = line.split(",");
-                User profile = new User(profileData[0], profileData[1], profileData[2], profileData[3],
-                        Integer.parseInt(profileData[4]), profileData[5], profileData[6], profileData[7]);
+                User profile = new User(profileData[0], profileData[1], profileData[2], profileData[3], Integer.parseInt(profileData[4]), profileData[5], profileData[6], profileData[7], profileData[8]);
+                
                 profiles.add(profile);
             }
         } catch (IOException e) {
@@ -47,7 +70,7 @@ public class Match {
         if (!givenProfile.getRace().equals(otherProfile.getRace())) {
             matches++;
         }
-        if (givenProfile.getAge() == otherProfile.getAge()) {
+        if (givenProfile.getAge() == otherProfile.getAge()){
             matches++;
         }
         if (!givenProfile.getIdentity().equals(otherProfile.getIdentity())) {
@@ -58,4 +81,3 @@ public class Match {
         }
         return matches;
     }
-}
