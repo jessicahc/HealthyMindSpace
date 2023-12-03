@@ -166,16 +166,15 @@ public class MainGUI implements ActionListener {
     
     protected void displayMatchPage() {
     	mainPanel.removeAll();
-    	
-    	// content panel
-    	JLabel lblMatch = new JLabel("Match With Other User");
-    	JLabel tmpLabel = new JLabel("List matched users will be displayed here");
-    	lblMatch.setFont(FONT_CONTENT);
-    	mainPanel.add(BorderLayout.NORTH, lblMatch);
-    	mainPanel.add(BorderLayout.CENTER, tmpLabel);
-
-    	mainPanel.validate();
-    	mainPanel.repaint();
+        User testUser = new User("Layla", "layalc@gmail.com", "female", "Hispanic", 26, "dealing with anxiety", "talk about anxiety");
+        List<User> match = new ArrayList<>(Match.findMatches(testUser,"data.txt"));
+        MatchPage matchPage = new MatchPage(match);
+        JComponent component = matchPage.getContent();
+        JLabel lblMyProfile = new JLabel("Matched Profiles");
+        mainPanel.add(BorderLayout.NORTH, lblMyProfile);
+        mainPanel.add(BorderLayout.CENTER, component);
+        mainPanel.validate();
+        mainPanel.repaint();
     }
     
     public void actionPerformed(ActionEvent e) {
