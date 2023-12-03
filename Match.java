@@ -51,14 +51,13 @@ public class Match{
             String line;
             while ((line = br.readLine()) != null) {
                 String[] profileData = line.split(",");
-                User profile = new User(profileData[0], profileData[1], profileData[2], profileData[3], Integer.parseInt(profileData[4]), profileData[5], profileData[6], profileData[7], profileData[8]);
+                User profile = new User(profileData[0], profileData[1], profileData[2], profileData[3], Integer.parseInt(profileData[4]), profileData[5], profileData[6]);
                 
                 profiles.add(profile);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return profiles;
     }
 
@@ -67,13 +66,10 @@ public class Match{
         if (!givenProfile.getGender().equals(otherProfile.getGender())) {
             matches++;
         }
-        if (!givenProfile.getRace().equals(otherProfile.getRace())) {
+        if (!givenProfile.getEthnicity().equals(otherProfile.getEthnicity())) {
             matches++;
         }
         if (givenProfile.getAge() == otherProfile.getAge()){
-            matches++;
-        }
-        if (!givenProfile.getIdentity().equals(otherProfile.getIdentity())) {
             matches++;
         }
         if (!givenProfile.getCurrProblems().equals(otherProfile.getCurrProblems())) {
@@ -81,3 +77,5 @@ public class Match{
         }
         return matches;
     }
+
+}
