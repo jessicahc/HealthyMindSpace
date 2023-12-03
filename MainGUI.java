@@ -34,7 +34,7 @@ public class MainGUI implements ActionListener {
         btnHome = new JButton("Home");
         btnHome.addActionListener(this);
 
-        btnCommunity = new JButton("Communities");
+        btnCommunity = new JButton("Community");
         btnCommunity.addActionListener(this);
 
         btnMatch = new JButton("Match");
@@ -121,14 +121,28 @@ public class MainGUI implements ActionListener {
     protected void displayProfilePage() {
     	mainPanel.removeAll();
 
-    	profilePage = new ProfilePage();
+    	User testUser = new User("Layla", "layalc@gmail.com", "female", "Hispanic", 26, "dealing with anxiety", "talk about anxiety");
+    	profilePage = new ProfilePage(testUser);
     	JComponent component = profilePage.getContent();
+    	
     	// content panel
-    	JLabel tmpLabel = new JLabel("Profile page will be displayed here");
-
     	JLabel lblMyProfile = new JLabel("My Profile");
     	lblMyProfile.setFont(FONT_CONTENT);
     	mainPanel.add(BorderLayout.NORTH, lblMyProfile);
+    	mainPanel.add(BorderLayout.CENTER, component);
+
+    	mainPanel.validate();
+    	mainPanel.repaint();
+    }
+    
+    protected void displayCommunityPage() {
+    	mainPanel.removeAll();
+    	
+    	// content panel
+    	JLabel lblCommunity = new JLabel("My Recently Viewed Communities");
+    	JLabel tmpLabel = new JLabel("Community page will be displayed here");
+    	lblCommunity.setFont(FONT_CONTENT);
+    	mainPanel.add(BorderLayout.NORTH, lblCommunity);
     	mainPanel.add(BorderLayout.CENTER, tmpLabel);
 
     	mainPanel.validate();
@@ -136,13 +150,57 @@ public class MainGUI implements ActionListener {
     }
 
 
-     public void actionPerformed(ActionEvent e) {
-    	 String cmd = e.getActionCommand();
+    protected void displayEventsPage() {
+    	mainPanel.removeAll();
+    	
+    	// content panel
+    	JLabel lblEvents = new JLabel("Local Support Events");
+    	JLabel tmpLabel = new JLabel("Events list will be displayed here");
+    	lblEvents.setFont(FONT_CONTENT);
+    	mainPanel.add(BorderLayout.NORTH, lblEvents);
+    	mainPanel.add(BorderLayout.CENTER, tmpLabel);
 
-    	 if (cmd.equalsIgnoreCase(btnProfile.getText())) {
-    		 System.out.println("Profile is clicked");
-    		 displayProfilePage();
-    	 }
+    	mainPanel.validate();
+    	mainPanel.repaint();
+    }
+    
+    protected void displayMatchPage() {
+    	mainPanel.removeAll();
+    	
+    	// content panel
+    	JLabel lblMatch = new JLabel("Match With Other User");
+    	JLabel tmpLabel = new JLabel("List matched users will be displayed here");
+    	lblMatch.setFont(FONT_CONTENT);
+    	mainPanel.add(BorderLayout.NORTH, lblMatch);
+    	mainPanel.add(BorderLayout.CENTER, tmpLabel);
+
+    	mainPanel.validate();
+    	mainPanel.repaint();
+    }
+    
+    public void actionPerformed(ActionEvent e) {
+    	String cmd = e.getActionCommand();
+
+    	if (cmd.equalsIgnoreCase(btnProfile.getText())) {
+    		System.out.println("Profile is clicked");
+    		displayProfilePage();
+    	}
+    	else if (cmd.equalsIgnoreCase(btnCommunity.getText())) {
+    		System.out.println("Communities is clicked");
+    		displayCommunityPage();
+    	}
+    	else if (cmd.equalsIgnoreCase(btnMatch.getText())) {
+    		System.out.println("Match is clicked");
+    		displayMatchPage();
+    	}
+    	else if (cmd.equalsIgnoreCase(btnEvents.getText())) {
+    		System.out.println("Events is clicked");
+    		displayEventsPage();
+    	}
+    	else if (cmd.equalsIgnoreCase(btnHome.getText())) {
+    		System.out.println("Home is clicked");
+    		displayEventsPage();
+    	}
 
      }
 

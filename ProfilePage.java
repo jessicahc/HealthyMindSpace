@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class ProfilePage extends JFrame {
+public class ProfilePage extends JFrame implements ActionListener {
 	private static final int LEFT_PADDING_SIZE = 10;
 
     JButton buttonUpdate;
@@ -72,7 +72,7 @@ public class ProfilePage extends JFrame {
         buttonUpdate = new JButton();
         buttonUpdate.setSize(20, 15);
         buttonUpdate.setText("Update Profile");
-        buttonUpdate.addActionListener((ActionListener) this);
+        buttonUpdate.addActionListener(this);
 
         southPanel.add(buttonUpdate);
         southPanel.setBorder(new EmptyBorder(5, 0, 15, 0));
@@ -120,9 +120,9 @@ public class ProfilePage extends JFrame {
     private JPanel createLabeledField(JLabel label, JComponent component) {
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout(FlowLayout.LEFT, LEFT_PADDING_SIZE, 0));
-        label.setFont(f);
+        label.setFont(fLarge);
         panel.add(label);
-        component.setFont(fLarge);
+        component.setFont(f);
         panel.add(component);
         return panel;
     }
@@ -140,6 +140,7 @@ public class ProfilePage extends JFrame {
         // Continue updating other fields as needed
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == buttonUpdate) {
             updateUser();

@@ -6,7 +6,6 @@ public class User {
     private String gender;
     private String ethnicity;
     private int age;
-    private String identity;
     private String resources;
     private String currProblems;
     private String viewedGroups;
@@ -14,15 +13,13 @@ public class User {
     public User() {
     }
 
-    public User(String name, String email, String gender, String race, int age, String identity, String currProblems,
+    public User(String name, String email, String gender, String ethnicity, int age, String currProblems,
             String viewedGroups) {
         this.name = name;
         this.email = email;
         this.gender = gender;
         this.ethnicity = ethnicity;
         this.age = age;
-        this.identity = identity;
-        this.resources = resources;
         this.currProblems = currProblems;
         this.viewedGroups = viewedGroups;
     }
@@ -52,14 +49,6 @@ public class User {
         return age;
     }
 
-    public String getIdentity() {
-        return identity;
-    }
-
-    public String getResources() {
-        return resources;
-    }
-
     public String getCurrProblems() {
         return currProblems;
     }
@@ -86,14 +75,6 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public void setIdentity(String identity) {
-        this.identity = identity;
-    }
-
-    public void setResources(String resources) {
-        this.resources = resources;
     }
 
     public void setCurrProblems(String currProblems) {
