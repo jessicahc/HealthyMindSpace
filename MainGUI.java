@@ -121,23 +121,22 @@ public class MainGUI implements ActionListener {
         mainFrame.setVisible(true);
     }
 
-    // protected void displayNewReservation() {
-    // mainPanel.removeAll();
+    protected void displayProfilePage() {
+    	mainPanel.removeAll();
 
-    // //newReservation = new NewReservation();
-    // //JComponent component = newReservation.getContent();
-    // //TODO: Temporary - this JLabel will be replaced by NewReservation object's
-    // content panel
-    // JLabel tmpLabel = new JLabel("New Reservation Form will be displayed here");
+//    	profilePage = new ProfilePage();
+//    	JComponent component = profilePage.getContent();
+    	// content panel
+    	JLabel tmpLabel = new JLabel("Profile page will be displayed here");
 
-    // JLabel lblNewRes = new JLabel(" Book a New Reserveration:");
-    // lblNewRes.setFont(FONT_CONTENT);
-    // mainPanel.add(BorderLayout.NORTH, lblNewRes);
-    // mainPanel.add(BorderLayout.CENTER, tmpLabel);
+    	JLabel lblMyProfile = new JLabel("My Profile");
+    	lblMyProfile.setFont(FONT_CONTENT);
+    	mainPanel.add(BorderLayout.NORTH, lblMyProfile);
+    	mainPanel.add(BorderLayout.CENTER, tmpLabel);
 
-    // mainPanel.validate();
-    // mainPanel.repaint();
-    // }
+    	mainPanel.validate();
+    	mainPanel.repaint();
+    }
 
     // protected void displayViewModifyReservation(ActionEvent e) {
     // if (lastSelectedReservation != null)
@@ -194,13 +193,13 @@ public class MainGUI implements ActionListener {
 
     // }
 
-    // public void actionPerformed(ActionEvent e) {
-    // String cmd = e.getActionCommand();
+     public void actionPerformed(ActionEvent e) {
+     String cmd = e.getActionCommand();
 
-    // if (cmd.equalsIgnoreCase(btnNewRes.getText())) {
-    // System.out.println("NewReservation is clicked");
-    // displayNewReservation();
-    // }
+     if (cmd.equalsIgnoreCase(btnProfile.getText())) {
+    	 System.out.println("Profile is clicked");
+    	 displayProfilePage();
+     }
     // else if (cmd.equalsIgnoreCase(btnViewModifyRes.getText())) {
     // System.out.println("ViewModifyAReservation is clicked");
     // displayViewModifyReservation(e);
@@ -227,7 +226,7 @@ public class MainGUI implements ActionListener {
     // + ((lastSelectedReservation != null) ?
     // lastSelectedReservation.getReservationId() : "null"));
     // }
-    // }
+     }
 
     public static void main(String[] args) {
         // ReservationFileHandler.loadReservations("Reservations2022.txt");
