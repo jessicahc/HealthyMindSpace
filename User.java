@@ -1,9 +1,10 @@
 public class User {
 
+	public static final String GENDER_LIST[] = new String[] {"Male", "Female", "Other"};
     private String name;
     private String email;
     private String gender;
-    private String race;
+    private String ethnicity;
     private int age;
     private String identity;
     private String resources;
@@ -18,7 +19,7 @@ public class User {
         this.name = name;
         this.email = email;
         this.gender = gender;
-        this.race = race;
+        this.ethnicity = ethnicity;
         this.age = age;
         this.identity = identity;
         this.resources = resources;
@@ -43,8 +44,8 @@ public class User {
         return gender;
     }
 
-    public String getRace() {
-        return race;
+    public String getEthnicity() {
+        return ethnicity;
     }
 
     public int getAge() {
@@ -67,4 +68,39 @@ public class User {
         return viewedGroups;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public void setEthnicity(String ethnicity) {
+        this.ethnicity = ethnicity;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setIdentity(String identity) {
+        this.identity = identity;
+    }
+
+    public void setResources(String resources) {
+        this.resources = resources;
+    }
+
+    public void setCurrProblems(String currProblems) {
+        this.currProblems = currProblems;
+    }
+
+    public void setViewedGroups(String viewedGroups) {
+        this.viewedGroups = viewedGroups;
+    }
 }

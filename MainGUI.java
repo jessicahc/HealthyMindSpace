@@ -18,6 +18,7 @@ public class MainGUI implements ActionListener {
     JButton btnHome;
     JButton btnCommunity;
     JButton btnEvents;
+    JButton btnMatch;
     JButton btnProfile;
 
     ProfilePage profilePage;
@@ -36,6 +37,9 @@ public class MainGUI implements ActionListener {
         btnCommunity = new JButton("Communities");
         btnCommunity.addActionListener(this);
 
+        btnMatch = new JButton("Match");
+        btnMatch.addActionListener(this);
+        
         btnEvents = new JButton("Events");
         btnEvents.addActionListener(this);
 
@@ -47,7 +51,6 @@ public class MainGUI implements ActionListener {
     public void initialize() {
         mainFrame.setSize(300, 900);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // mainFrame.setLocationRelativeTo(null); // doesn't work on Mac
 
         // Title and logo section
         // ImageIcon logoIcon = new ImageIcon("logo_sm.png");
@@ -81,23 +84,17 @@ public class MainGUI implements ActionListener {
         c.gridwidth = 1;
         c.ipady = 5;
         menuPanel.add(btnHome, c);
-        // c.insets = new Insets(10, 10, 20, 10);
-        c.gridx = 1;
-        // c.gridy = 5;
-        // c.gridwidth = 1;
-        // c.ipady = 5;
+  
+        c.gridx = 1; 
         menuPanel.add(btnCommunity, c);
-        // c.insets = new Insets(10, 10, 20, 10);
+       
         c.gridx = 2;
-        // c.gridy = 5;
-        // c.gridwidth = 1;
-        // c.ipady = 5;
-        menuPanel.add(btnEvents, c);
-        // c.insets = new Insets(10, 10, 20, 0);
+        menuPanel.add(btnMatch, c);
+   
         c.gridx = 3;
-        // c.gridy = 5;
-        // c.gridwidth = 1;
-        // c.ipady = 5;
+        menuPanel.add(btnEvents, c);
+        
+        c.gridx = 4;
         menuPanel.add(btnProfile, c);
 
         // Main content section
@@ -124,8 +121,8 @@ public class MainGUI implements ActionListener {
     protected void displayProfilePage() {
     	mainPanel.removeAll();
 
-//    	profilePage = new ProfilePage();
-//    	JComponent component = profilePage.getContent();
+    	profilePage = new ProfilePage();
+    	JComponent component = profilePage.getContent();
     	// content panel
     	JLabel tmpLabel = new JLabel("Profile page will be displayed here");
 
@@ -138,98 +135,19 @@ public class MainGUI implements ActionListener {
     	mainPanel.repaint();
     }
 
-    // protected void displayViewModifyReservation(ActionEvent e) {
-    // if (lastSelectedReservation != null)
-    // viewReservationForm = new ViewReservation(lastSelectedReservation);
-    // else {
-    // JOptionPane.showMessageDialog(mainFrame, "No Reservation Selected! Please
-    // select a reservation first.",
-    // "ERROR", JOptionPane.ERROR_MESSAGE);
-    // return;
-    // }
-
-    // mainPanel.removeAll();
-    // viewReservationForm = new ViewReservation(lastSelectedReservation);
-    // JComponent component = viewReservationForm.getContent();
-
-    // JLabel lblNewRes = new JLabel(" View or Modify a Reserveration:");
-    // lblNewRes.setFont(FONT_CONTENT);
-    // mainPanel.add(BorderLayout.NORTH, lblNewRes);
-    // mainPanel.add(BorderLayout.CENTER, component);
-
-    // mainPanel.validate();
-    // mainPanel.repaint();
-    // }
-
-    // protected void displayViewActiveReservations() {
-    // mainPanel.removeAll();
-
-    // activeReservationsTable = new ActiveReservationsTable(this);
-
-    // JComponent component = activeReservationsTable.getContent();
-    // JLabel lblActiveRes = new JLabel(" Active / Upcoming Reserverations:");
-    // lblActiveRes.setFont(FONT_CONTENT);
-    // mainPanel.add(BorderLayout.NORTH, lblActiveRes);
-    // mainPanel.add(BorderLayout.CENTER, component);
-
-    // mainPanel.validate();
-    // mainPanel.repaint();
-
-    // }
-
-    // protected void displayViewInactiveReservations() {
-    // mainPanel.removeAll();
-
-    // inactiveReservationsTable = new InactiveReservationsTable(this);
-
-    // JComponent component = inactiveReservationsTable.getContent();
-    // JLabel lblInactiveRes = new JLabel(" Inactive Reserverations:");
-    // lblInactiveRes.setFont(FONT_CONTENT);
-    // mainPanel.add(BorderLayout.NORTH, lblInactiveRes);
-    // mainPanel.add(BorderLayout.CENTER, component);
-
-    // mainPanel.validate();
-    // mainPanel.repaint();
-
-    // }
 
      public void actionPerformed(ActionEvent e) {
-     String cmd = e.getActionCommand();
+    	 String cmd = e.getActionCommand();
 
-     if (cmd.equalsIgnoreCase(btnProfile.getText())) {
-    	 System.out.println("Profile is clicked");
-    	 displayProfilePage();
-     }
-    // else if (cmd.equalsIgnoreCase(btnViewModifyRes.getText())) {
-    // System.out.println("ViewModifyAReservation is clicked");
-    // displayViewModifyReservation(e);
-    // }
-    // else if (cmd.equalsIgnoreCase(btnViewActiveRes.getText())) {
-    // System.out.println("ViewActiveReservations is clicked");
-    // displayViewActiveReservations();
-    // }
-    // else if (cmd.equalsIgnoreCase(btnViewInactiveRes.getText())) {
-    // System.out.println("ViewInactiveReservations is clicked");
-    // displayViewInactiveReservations();
-    // }
-    // else if (cmd.equalsIgnoreCase("ActiveReservationsTable")) {
-    // this.lastSelectedReservation =
-    // activeReservationsTable.getSelectedReservation();
-    // System.out.println("MainGUI: update lastSelectedReservation = "
-    // + ((lastSelectedReservation != null) ?
-    // lastSelectedReservation.getReservationId() : "null"));
-    // }
-    // else if (cmd.equalsIgnoreCase("InactiveReservationsTable")) {
-    // this.lastSelectedReservation =
-    // inactiveReservationsTable.getSelectedReservation();
-    // System.out.println("MainGUI: update lastSelectedReservation = "
-    // + ((lastSelectedReservation != null) ?
-    // lastSelectedReservation.getReservationId() : "null"));
-    // }
+    	 if (cmd.equalsIgnoreCase(btnProfile.getText())) {
+    		 System.out.println("Profile is clicked");
+    		 displayProfilePage();
+    	 }
+
      }
 
     public static void main(String[] args) {
-        // ReservationFileHandler.loadReservations("Reservations2022.txt");
+        // UserFileHandler.loadUser("Users.txt");
         MainGUI base = new MainGUI();
         base.initialize();
         base.displayFrame();
